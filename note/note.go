@@ -5,24 +5,21 @@
 package note
 
 import (
+	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
 )
 
-const (
-	filePath = "/Users/michael.zhao/GoogleDrive/Sync/Note/"
-)
-
 func Add(filename string) {
-	path := filePath + filename
-	file, err := os.Create(path)
+	file, err := os.Create(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
 	file.Close()
 
-	cmd := exec.Command("vim", path)
+	cmd := exec.Command("vim", filename)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -37,9 +34,7 @@ func Add(filename string) {
 }
 
 func Edit(filename string) {
-	path := filePath + filename
-
-	cmd := exec.Command("vim", path)
+	cmd := exec.Command("vim", filename)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -50,5 +45,15 @@ func Edit(filename string) {
 
 	if err := cmd.Wait(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func List(root string) {
+	files, err := ioutil.ReadDir(root)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, f := range files {
+		fmt.Println(f.Name())
 	}
 }

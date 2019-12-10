@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 	"github.com/xiaofeizhao/xnote/note"
 )
 
@@ -14,8 +15,9 @@ var addCmd = &cobra.Command{
 	Use:   "add [note name]",
 	Short: "Add a note",
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) != 0 {
-			note.Add(args[0])
+		if len(args) > 0 {
+			filename := viper.GetString("filepath") + args[0]
+			note.Add(filename)
 		}
 	},
 }
