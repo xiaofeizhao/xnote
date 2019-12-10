@@ -6,7 +6,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/xiaofeizhao/znote/note"
+	"github.com/xiaofeizhao/xnote/note"
 )
 
 // addCmd represents the add command

@@ -4,7 +4,7 @@
 
 package main
 
-import "github.com/xiaofeizhao/znote/cmd"
+import "github.com/xiaofeizhao/xnote/cmd"
 
 func main() {
 	cmd.Execute()

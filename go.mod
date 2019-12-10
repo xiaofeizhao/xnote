@@ -1,4 +1,4 @@
-module github.com/xiaofeizhao/znote
+module github.com/xiaofeizhao/xnote
 
 go 1.13
 

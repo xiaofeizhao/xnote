@@ -1,2 +1,2 @@
-# znote
+# Xnote
 personal note

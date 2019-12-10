@@ -6,7 +6,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/xiaofeizhao/znote/note"
+	"github.com/xiaofeizhao/xnote/note"
 )
 
 // editCmd represents the edit command
@@ -14,7 +14,7 @@ var editCmd = &cobra.Command{
 	Use:   "edit [note name]",
 	Short: "Edit a note",
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) > 0{
+		if len(args) > 0 {
 			note.Edit(args[0])
 		}
 	},
