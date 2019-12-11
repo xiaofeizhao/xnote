@@ -5,7 +5,6 @@
 package cmd
 
 import (
-	"github.com/spf13/viper"
 	"github.com/xiaofeizhao/xnote/note"
 
 	"github.com/spf13/cobra"
@@ -16,8 +15,11 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "list all notes",
 	Run: func(cmd *cobra.Command, args []string) {
-		path := viper.GetString("filepath")
-		note.List(path)
+		folderName := ""
+		if len(args) > 0 {
+			folderName = args[0]
+		}
+		note.GetNote().List(folderName)
 	},
 }
 

@@ -6,32 +6,30 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"github.com/xiaofeizhao/xnote/note"
 )
 
-// addCmd represents the add command
-var addCmd = &cobra.Command{
-	Use:   "add [note name]",
-	Short: "Add a note",
+// createCmd represents the create command
+var createCmd = &cobra.Command{
+	Use:   "create [note(s) name]",
+	Short: "Create note(s)",
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) > 0 {
-			filename := viper.GetString("filepath") + args[0]
-			note.Add(filename)
+		for _, fileName := range args {
+			note.GetNote().Add(fileName)
 		}
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(addCmd)
+	rootCmd.AddCommand(createCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// addCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// createCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// addCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// createCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

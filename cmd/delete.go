@@ -5,23 +5,18 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
+	"github.com/xiaofeizhao/xnote/note"
 )
 
 // deleteCmd represents the delete command
 var deleteCmd = &cobra.Command{
-	Use:   "delete",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Use:   "delete [note(s) name]",
+	Short: "Delete note(s)",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("delete called")
+		for _, fileName := range args {
+			note.GetNote().Delete(fileName)
+		}
 	},
 }
 

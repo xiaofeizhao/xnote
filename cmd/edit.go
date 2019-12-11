@@ -6,7 +6,6 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"github.com/xiaofeizhao/xnote/note"
 )
 
@@ -15,10 +14,11 @@ var editCmd = &cobra.Command{
 	Use:   "edit [note name]",
 	Short: "Edit a note",
 	Run: func(cmd *cobra.Command, args []string) {
+		fileName := ""
 		if len(args) > 0 {
-			filename := viper.GetString("filepath") + args[0]
-			note.Edit(filename)
+			fileName = args[0]
 		}
+		note.GetNote().Edit(fileName)
 	},
 }
 
