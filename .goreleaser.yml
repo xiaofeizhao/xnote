@@ -30,7 +30,6 @@ brews:
       owner: xiaofeizhao
       name: homebrew-tap
     url_template: "https://github.com/xiaofeizhao/xnote/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
     commit_author:
       name: Michael Zhao
       email: michaelxzhao@icloud.com
